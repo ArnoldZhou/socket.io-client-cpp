@@ -19,7 +19,7 @@ endif()
 set(BOOST_VER "1.55.0" CACHE STRING "boost version" )
 
 set(Boost_USE_MULTITHREADED ON) 
-set(Boost_USE_STATIC_RUNTIME OFF) 
+set(Boost_USE_STATIC_RUNTIME ON) 
 find_package(Boost ${BOOST_VER} REQUIRED COMPONENTS system date_time random) 
 
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src ALL_SRC)
