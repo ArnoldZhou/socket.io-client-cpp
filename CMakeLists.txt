@@ -22,6 +22,10 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME ON) 
 find_package(Boost ${BOOST_VER} REQUIRED COMPONENTS system date_time random) 
 
+if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+endif ()
+
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src ALL_SRC)
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src/internal ALL_SRC)
 file(GLOB ALL_HEADERS ${CMAKE_CURRENT_LIST_DIR}/src/*.h )
