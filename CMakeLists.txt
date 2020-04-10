@@ -24,6 +24,8 @@ find_package(Boost ${BOOST_VER} REQUIRED COMPONENTS system date_time random)
 
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+    # fix std::bad_cast in cpp-httplib, ref: https://gcc.gnu.org/bugzilla//show_bug.cgi?id=82366#c5
+    add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 endif ()
 
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src ALL_SRC)
